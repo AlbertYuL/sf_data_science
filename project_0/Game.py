@@ -7,8 +7,8 @@
 import numpy
 
 
-def predict(number):#алгоритм угадывания
-    count = 0#количество попыток угадывания
+def predict(number): #prediction algorithm
+    count = 0 #count of attempts
     supposed_number = 50
     max_sup_num = 100
     min_sup_num = 2
@@ -26,13 +26,13 @@ def predict(number):#алгоритм угадывания
             supposed_number = round((max_sup_num + min_sup_num) / 2)
     return count
 
-def score_game(predict):
+def score_game(predict): #1000 predictions
     numpy.random.seed(1)
     random_array = numpy.random.randint(1, 101, size = (1000))
-    count_list = []
+    count_list = [] # list of results
     for number in random_array:
         count_list.append(predict(number))
-    score = int(numpy.mean(count_list))
+    score = int(numpy.mean(count_list)) 
     print(f"Мой алгоритм угадывает число в среднем за:{score} попыток")
     return score
 
